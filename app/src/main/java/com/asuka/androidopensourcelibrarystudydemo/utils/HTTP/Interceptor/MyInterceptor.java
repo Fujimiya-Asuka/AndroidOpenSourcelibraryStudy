@@ -1,4 +1,4 @@
-package com.asuka.androidopensourcelibrarystudydemo.utils.Interceptor;
+package com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.Interceptor;
 
 import java.io.IOException;
 

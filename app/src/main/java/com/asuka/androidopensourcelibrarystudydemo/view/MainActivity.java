@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         clickAndSwitchActivity(binding.rxjavaBtn, RxjavaActivity.class);
         clickAndSwitchActivity(binding.retrofitBtn, RetrofitActivity.class);
         clickAndSwitchActivity(binding.okhttpBtn,OkHttpActivity.class);
+        clickAndSwitchActivity(binding.cameraView,CameraViewActivity.class);
     }
 
     /**

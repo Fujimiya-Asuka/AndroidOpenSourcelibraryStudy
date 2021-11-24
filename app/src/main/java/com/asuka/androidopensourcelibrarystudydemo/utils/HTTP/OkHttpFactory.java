@@ -1,5 +1,7 @@
 package com.asuka.androidopensourcelibrarystudydemo.utils.HTTP;
 
+import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.Cookies.CookiesManager;
+
 import okhttp3.OkHttpClient;
 
 public class OkHttpFactory {
@@ -11,7 +13,9 @@ public class OkHttpFactory {
         if (client == null){
             synchronized (OkHttpFactory.class){
                 if (client == null){
-                    client = new OkHttpClient.Builder().build();
+                    client = new OkHttpClient.Builder()
+                            .cookieJar(new CookiesManager())
+                            .build();
                 }
             }
         }
