@@ -3,10 +3,10 @@
     package="com.asuka.androidopensourcelibrarystudydemo">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:name=".AppMain"
@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOpenSourceLibraryStudyDemo">
-        <activity android:name=".view.CameraViewActivity"></activity>
+
+        <activity android:name=".view.AndroidAsyncActivity" />
+        <activity android:name=".view.CameraViewActivity" />
         <activity android:name=".view.OkHttpActivity" />
         <activity android:name=".view.RetrofitActivity" />
         <activity android:name=".view.RxjavaActivity" />

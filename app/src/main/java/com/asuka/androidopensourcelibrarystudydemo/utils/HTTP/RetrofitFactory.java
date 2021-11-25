@@ -31,8 +31,8 @@ public class RetrofitFactory {
                     wanAndroidClient = new Retrofit.Builder()
                             .baseUrl("https://www.wanandroid.com")
                             .client(OkHttpFactory.getClient())
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                            .addConverterFactory(FastJsonConverterFactory.create()) //添加转换器
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) //添加适配器
                             .build();
                 }
             }

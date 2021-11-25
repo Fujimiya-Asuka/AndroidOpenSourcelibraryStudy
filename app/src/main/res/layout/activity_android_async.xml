@@ -4,23 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.RxjavaActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="example"
-        android:textSize="20sp"
-        />
+    tools:context=".view.AndroidAsyncActivity">
 
     <Button
-        android:layout_below="@id/textView"
-        android:id="@+id/Flowable_btn"
+        android:id="@+id/startServer_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Flowable"
-        android:textAllCaps="false"
+        android:text="启动服务"
         android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/stopServer_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停止服务"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/startServer_btn"/>
+
 </RelativeLayout>

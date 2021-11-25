@@ -13,6 +13,7 @@ import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -22,8 +23,7 @@ public class RxjavaActivity extends AppCompatActivity {
 
     private CompositeDisposable compositeDisposable;
     ActivityRxjavaBinding binding;
-    public FlowableEmitter<Integer> emitter;
-    private int a =1;
+    private FlowableEmitter<Integer> emitter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +37,13 @@ public class RxjavaActivity extends AppCompatActivity {
             public void subscribe(FlowableEmitter<Integer> e) throws Exception {
                 emitter = e;
             }
-        }, BackpressureStrategy.MISSING)
+        }, BackpressureStrategy.BUFFER)
                 .observeOn(Schedulers.io())
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Integer>() {
             @Override
             public void accept(Integer integer) throws Exception {
-                Timber.d(""+integer);
+                binding.textView.setText(""+integer);
             }
         }));
 
@@ -51,9 +51,20 @@ public class RxjavaActivity extends AppCompatActivity {
         binding.FlowableBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = 0; i < 140; i++) {
-                    emitter.onNext(i);
-                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int i = 0; i < 500; i++) {
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            emitter.onNext(i);
+                        }
+                    }
+                }).start();
+
             }
         });
     }

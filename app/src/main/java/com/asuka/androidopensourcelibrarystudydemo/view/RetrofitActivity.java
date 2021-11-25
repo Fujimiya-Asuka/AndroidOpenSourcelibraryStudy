@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.asuka.androidopensourcelibrarystudydemo.R;
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityRetrofitBinding;
 import com.asuka.androidopensourcelibrarystudydemo.modle.api.Api;
@@ -63,14 +65,38 @@ public class RetrofitActivity extends AppCompatActivity {
         binding.postWanBtn.setOnClickListener(view -> {
             Retrofit wanAndroidClient = RetrofitFactory.getWanAndroidClient();
             WanAndroidApi wanAndroidApi = wanAndroidClient.create(WanAndroidApi.class);
-            wanAndroidApi.login("Fujimiya_Asuka","1593572580").enqueue(new MyCallBack<BaseResponse>() {
+            //不使用自动数据类型的请求情况:
+            wanAndroidApi.login("Fujimiya_Asuka","1593572580").enqueue(new MyCallBack<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    //需要自己手动将ResponseBody的数据转换为BaseResponse
+                    String s = null;
+                    if (response!=null){
+                        try {
+                            s = response.body().string();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    Timber.d("不使用自动数据类型的请求情况:");
+                    BaseResponse baseResponse = JSON.parseObject(s, BaseResponse.class);
+                    Timber.d(baseResponse.toString());
+                }
+            });
+           //使用自动数据类型的请求情况:
+            wanAndroidApi.login2("Fujimiya_Asuka","1593572580").enqueue(new MyCallBack<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                    Timber.d(response.body().toString());
+                    Timber.d("使用自动数据类型的请求情况:");
+                    //response的body就是BaseResponse类型的数据
+                    BaseResponse baseResponse = response.body();
+                    Timber.d(baseResponse.toString());
                 }
             });
         });
 
+        
+        
 //        binding.postBtn.setOnClickListener(view -> api.post("123","456").enqueue(new Callback<ResponseBody>() {
 //            @Override
 //            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
