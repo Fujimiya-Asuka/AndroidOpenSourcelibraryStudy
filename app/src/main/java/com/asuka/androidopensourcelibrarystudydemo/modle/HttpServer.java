@@ -1,13 +1,17 @@
 package com.asuka.androidopensourcelibrarystudydemo.modle;
 
+import android.widget.Toast;
+
 import com.koushikdutta.async.callback.ListenCallback;
 import com.koushikdutta.async.http.server.AsyncHttpServer;
 import com.koushikdutta.async.http.server.AsyncHttpServerRequest;
 import com.koushikdutta.async.http.server.AsyncHttpServerResponse;
 import com.koushikdutta.async.http.server.HttpServerRequestCallback;
 
+import java.io.File;
 import java.sql.Timestamp;
 
+import okhttp3.OkHttpClient;
 import timber.log.Timber;
 
 public class HttpServer implements HttpServerRequestCallback {
@@ -65,6 +69,7 @@ public class HttpServer implements HttpServerRequestCallback {
         Timber.d("停止HTTP服务");
         Timber.d(server.toString());
         server.stop();
+
     }
 
     /**

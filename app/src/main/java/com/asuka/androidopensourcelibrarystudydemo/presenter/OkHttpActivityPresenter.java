@@ -35,8 +35,9 @@ public class OkHttpActivityPresenter {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Timber.d(response.toString());
-                activity.runOnUiThread(() -> activity.binding.okhttpTv.setText(response.toString()+response.body().toString()));
+                String s= response.body().string();
+                Timber.d(s);
+                activity.showOnTextView(s);
             }
         });
     }
@@ -58,7 +59,9 @@ public class OkHttpActivityPresenter {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Timber.d(response.toString());
-                Timber.d(response.body().string());
+                String s = response.body().string();
+                Timber.d(s);
+                activity.showOnTextView(s);
             }
         });
     }
@@ -83,9 +86,12 @@ public class OkHttpActivityPresenter {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Timber.d(response.body().string());
+                String s = response.body().string();
+                Timber.d(s);
+                activity.showOnTextView(s);
             }
         });
     }
+
 
 }

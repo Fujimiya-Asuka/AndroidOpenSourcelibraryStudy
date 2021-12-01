@@ -4,36 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AndroidAsyncActivity">
+    tools:context=".view.MulticastSocketActivity">
 
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"/>
-
-
-    <Button
-        android:id="@+id/startServer_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="启动服务"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv"/>
+        android:layout_height="100dp"
+        android:text="Example"/>
 
     <Button
-        android:id="@+id/stopServer_btn"
+        android:id="@+id/receive_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="停止服务"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/startServer_btn"/>
+        android:layout_below="@id/textView"
+        android:text="开始接收组播"/>
 
     <Button
-        android:id="@+id/getA_btn"
+        android:id="@+id/send_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="访问a"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/stopServer_btn"/>
+        android:layout_below="@id/receive_btn"
+        android:text="发送组播"/>
 
 </RelativeLayout>

@@ -58,7 +58,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AndroidAsync"
-        android:layout_below="@id/okhttp_btn"
+        android:layout_below="@id/cameraView"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/RxNetty_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RxNetty"
+        android:layout_below="@id/AndroidAsync_btn"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/MulticastSocket_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MulticastSocket"
+        android:layout_below="@id/RxNetty_btn"
         android:layout_centerHorizontal="true"/>
 
 

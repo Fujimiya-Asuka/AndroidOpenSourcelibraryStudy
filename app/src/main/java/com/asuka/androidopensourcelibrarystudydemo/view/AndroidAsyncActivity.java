@@ -7,12 +7,17 @@ import android.view.View;
 
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityAndroidAsyncBinding;
 import com.asuka.androidopensourcelibrarystudydemo.modle.HttpServer;
+import com.asuka.androidopensourcelibrarystudydemo.modle.api.Api;
+import com.asuka.androidopensourcelibrarystudydemo.modle.api.MyHttpServerApi;
+import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.RetrofitFactory;
 
 import java.net.HttpURLConnection;
 
-public class AndroidAsyncActivity extends AppCompatActivity {
+import retrofit2.Retrofit;
 
-    ActivityAndroidAsyncBinding binding;
+public class AndroidAsyncActivity extends AppCompatActivity {
+    private ActivityAndroidAsyncBinding binding;
+    private MyHttpServerApi client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +26,10 @@ public class AndroidAsyncActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_android_async);
         setContentView(binding.getRoot());
 
-        binding.startServerBtn.setOnClickListener(view -> {
-            HttpServer.getInstance().startServer();
-        });
+        binding.startServerBtn.setOnClickListener(view -> HttpServer.getInstance().startServer());
 
-        binding.stopServerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HttpServer.getInstance().stopServer();
-            }
-        });
+        binding.stopServerBtn.setOnClickListener(view -> HttpServer.getInstance().stopServer());
+
 
     }
 

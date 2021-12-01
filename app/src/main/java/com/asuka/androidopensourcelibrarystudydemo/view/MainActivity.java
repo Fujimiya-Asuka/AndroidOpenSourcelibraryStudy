@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         clickAndSwitchActivity(binding.okhttpBtn,OkHttpActivity.class);
         clickAndSwitchActivity(binding.cameraView,CameraViewActivity.class);
         clickAndSwitchActivity(binding.AndroidAsyncBtn,AndroidAsyncActivity.class);
+        clickAndSwitchActivity(binding.RxNettyBtn,NettyActivity.class);
+        clickAndSwitchActivity(binding.MulticastSocketBtn,MulticastSocketActivity.class);
     }
 
     /**

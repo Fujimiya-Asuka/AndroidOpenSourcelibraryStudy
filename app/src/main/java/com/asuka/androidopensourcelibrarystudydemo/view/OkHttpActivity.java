@@ -26,9 +26,14 @@ public class OkHttpActivity extends AppCompatActivity {
         client = OkHttpFactory.getClient();
         presenter = new OkHttpActivityPresenter(this);
         binding.getBtn.setOnClickListener(view ->presenter.get());
+
         binding.postBtn.setOnClickListener(view -> presenter.post());
+
         binding.InterceptorBtn.setOnClickListener(view -> presenter.postWithInterceptor());
     }
 
+    public void showOnTextView(String s){
+        runOnUiThread(new Thread(() -> binding.okhttpTv.setText(s)));
+    }
 
 }
