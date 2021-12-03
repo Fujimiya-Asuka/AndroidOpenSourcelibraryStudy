@@ -85,4 +85,7 @@ dependencies {
     implementation("io.reactivex:rxnetty-common:0.5.3")
     implementation 'io.netty:netty-buffer:4.1.66.Final'
     implementation 'io.netty:netty-handler:4.1.66.Final'
+
+    //腾讯 https://github.com/Tencent/MMKV
+    implementation 'com.tencent:mmkv:1.2.11'
 }

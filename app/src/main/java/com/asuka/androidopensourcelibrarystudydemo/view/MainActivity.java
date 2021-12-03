@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         clickAndSwitchActivity(binding.AndroidAsyncBtn,AndroidAsyncActivity.class);
         clickAndSwitchActivity(binding.RxNettyBtn,NettyActivity.class);
         clickAndSwitchActivity(binding.MulticastSocketBtn,MulticastSocketActivity.class);
+        clickAndSwitchActivity(binding.mmkvBtn,MMKVActivity.class);
     }
 
     /**

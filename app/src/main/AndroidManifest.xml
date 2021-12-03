@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOpenSourceLibraryStudyDemo">
-        <activity android:name=".view.MulticastSocketActivity"></activity>
+        <activity android:name=".view.MMKVActivity"></activity>
+        <activity android:name=".view.MulticastSocketActivity" />
         <activity android:name=".view.NettyActivity" />
         <activity android:name=".view.AndroidAsyncActivity" />
         <activity android:name=".view.CameraViewActivity" />

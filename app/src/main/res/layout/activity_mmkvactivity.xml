@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MMKVActivity">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="key:"
+        android:textSize="26sp"/>
+    <EditText
+        android:id="@+id/keyEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv1"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="value:"
+        android:textSize="26sp"
+        android:layout_below="@id/tv1"/>
+    <EditText
+        android:id="@+id/valueEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv2"
+        android:layout_below="@id/tv1"/>
+
+    <Button
+        android:id="@+id/addUpdate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加/修改"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/valueEdit"/>
+
+    <EditText
+        android:id="@+id/deleteKey_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addUpdate_btn"/>
+
+    <Button
+        android:id="@+id/delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="删除"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/deleteKey_edit"/>
+
+    <TextView
+        android:id="@+id/searchResult_tv"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="example"
+        android:layout_below="@id/delete_btn"/>
+
+    <EditText
+        android:id="@+id/searchKey_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchResult_tv"/>
+
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="搜索"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/searchKey_edit"/>
+
+
+</RelativeLayout>
