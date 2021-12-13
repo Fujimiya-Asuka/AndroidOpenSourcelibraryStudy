@@ -24,11 +24,12 @@ class MainActivity : AppCompatActivity() {
         clickAndSwitchActivity(binding.retrofitBtn, RetrofitActivity::class.java)
         clickAndSwitchActivity(binding.okhttpBtn, OkHttpActivity::class.java)
         clickAndSwitchActivity(binding.cameraView, CameraViewActivity::class.java)
-//        clickAndSwitchActivity(binding.AndroidAsyncBtn, AndroidAsyncActivity::class.java)
-        binding.AndroidAsyncBtn.setOnClickListener { startActivity(Intent(this,AndroidAsyncActivity::class.java)) }
+        clickAndSwitchActivity(binding.AndroidAsyncBtn, AndroidAsyncActivity::class.java)
         clickAndSwitchActivity(binding.RxNettyBtn, NettyActivity::class.java)
         clickAndSwitchActivity(binding.MulticastSocketBtn, MulticastSocketActivity::class.java)
         clickAndSwitchActivity(binding.mmkvBtn, MMKVActivity::class.java)
+        clickAndSwitchActivity(binding.objectBoxBtn,ObjectBoxActivity::class.java)
+
     }
 
     /**

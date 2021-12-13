@@ -26,25 +26,16 @@ class RetrofitActivity : AppCompatActivity() {
         )
         //        setContentView(R.layout.activity_retrofit);
         setContentView(binding!!.root)
-        val api = RetrofitFactory.getClient().create(
-            Api::class.java
-        )
+        val api = RetrofitFactory.getClient().create(Api::class.java)
         binding!!.getBtn.setOnClickListener { view: View? ->
-            api["aaa", "bbb"].enqueue(object : Callback<ResponseBody> {
+            api.get("123","123").enqueue(object : MyCallBack<ResponseBody>(){
                 override fun onResponse(
-                    call: Call<ResponseBody>,
-                    response: Response<ResponseBody>
+                    call: Call<ResponseBody>?,
+                    response: Response<ResponseBody>?
                 ) {
-                    try {
-                        Timber.d(response.body().string())
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
+
                 }
 
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    Timber.d(t)
-                }
             })
         }
         binding!!.postBtn.setOnClickListener {

@@ -1,14 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id("kotlin-kapt") // Only for Kotlin projects.
 }
 apply plugin: 'com.google.protobuf'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-    viewBinding{
-        enabled true
+
+    buildFeatures{
+        viewBinding = true
     }
+
     defaultConfig {
         applicationId "com.asuka.androidopensourcelibrarystudydemo"
         minSdkVersion 21
@@ -128,4 +131,10 @@ dependencies {
     //kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
+    //ObjectBox调试
+    debugImplementation("io.objectbox:objectbox-android-objectbrowser:$objectboxVersion")
+    releaseImplementation("io.objectbox:objectbox-android:$objectboxVersion")
+
 }
+//启用ObjectBox调试必须将objectBox依赖插件代码写在最后，否则会重复引用库冲突
+apply plugin: "io.objectbox"

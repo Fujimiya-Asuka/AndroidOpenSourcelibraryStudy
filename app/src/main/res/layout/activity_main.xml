@@ -85,5 +85,15 @@
         android:layout_below="@id/MulticastSocket_btn"
         android:layout_centerHorizontal="true"/>
 
+    <Button
+        android:id="@+id/objectBox_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ObjectBox"
+        android:layout_below="@id/mmkv_btn"
+        android:layout_centerHorizontal="true"/>
+
+
+
 
 </RelativeLayout>
