@@ -1,7 +1,8 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
 }
-
+apply plugin: 'com.google.protobuf'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -25,8 +26,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility "1.8"
+        targetCompatibility "1.8"
     }
     packagingOptions {
         exclude 'META-INF/INDEX.LIST'
@@ -34,6 +35,34 @@ android {
         exclude 'META-INF/io.netty.versions.properties'
         exclude 'META-INF/CompilerHints'
     }
+
+//    protobuf {
+//        protoc {
+//            artifact = 'com.google.protobuf:protoc:3.19.1' // 配置编译器
+//        }
+//        generateProtoTasks {
+//            all().each { task ->
+//                task.builtins {
+//                    remove java
+//                }
+//                task.builtins {
+//                    java {}// 生产java源码
+//                }
+//            }
+//        }
+//    }
+
+//    sourceSets {
+//        main {
+//            java {
+//                srcDir 'src/main/java'
+//            }
+//            proto {
+//                srcDir 'src/main/java/com/asuka/androidopensourcelibrarystudydemo/modle/proto'  //指定.proto文件路径
+//            }
+//        }
+//    }
+
 }
 
 dependencies {
@@ -41,6 +70,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -80,12 +111,21 @@ dependencies {
     //	https://github.com/koush/AndroidAsync
     implementation("com.koushikdutta.async:androidasync:3.1.0")
 
-//    RxNetty
+    // RxNetty
     implementation("io.reactivex:rxnetty-tcp:0.5.3")
     implementation("io.reactivex:rxnetty-common:0.5.3")
     implementation 'io.netty:netty-buffer:4.1.66.Final'
     implementation 'io.netty:netty-handler:4.1.66.Final'
 
-    //腾讯 https://github.com/Tencent/MMKV
+    // 腾讯MMKV https://github.com/Tencent/MMKV
     implementation 'com.tencent:mmkv:1.2.11'
+
+    // protobuff https://github.com/protocolbuffers/protobuf/tree/master/java
+    implementation 'com.google.protobuf:protobuf-java:3.19.1'
+    //protobuf编译器
+    implementation 'com.google.protobuf:protoc:3.19.1'
+
+    //kotlin
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+
 }

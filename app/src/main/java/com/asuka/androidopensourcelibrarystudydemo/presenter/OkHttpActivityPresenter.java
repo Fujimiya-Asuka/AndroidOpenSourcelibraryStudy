@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.OkHttpFactory;
 import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.Interceptor.MyInterceptor;
-import com.asuka.androidopensourcelibrarystudydemo.view.OkHttpActivity;
+import com.asuka.androidopensourcelibrarystudydemo.view.activity.OkHttpActivity;
 
 import java.io.IOException;
 

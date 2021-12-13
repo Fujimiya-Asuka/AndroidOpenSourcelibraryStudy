@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AndroidAsyncActivity">
+    tools:context=".view.activity.AndroidAsyncActivit">
 
     <TextView
         android:id="@+id/tv"
@@ -27,13 +27,5 @@
         android:text="停止服务"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/startServer_btn"/>
-
-    <Button
-        android:id="@+id/getA_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="访问a"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/stopServer_btn"/>
 
 </RelativeLayout>

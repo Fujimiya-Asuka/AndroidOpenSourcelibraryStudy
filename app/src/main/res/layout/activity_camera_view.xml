@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CameraViewActivity">
+    tools:context=".view.activity.CameraViewActivity">
 
     <com.otaliastudios.cameraview.CameraView
         android:id="@+id/cameraView"
@@ -14,6 +14,16 @@
         />
 
     <Button
+        android:id="@+id/openCamera_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cameraView"
+        android:layout_toLeftOf="@id/takePhoto_btn"
+        android:text="打开摄像头"
+        android:layout_marginRight="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
         android:id="@+id/takePhoto_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,11 +31,23 @@
         android:text="拍照"
         android:layout_centerHorizontal="true"/>
 
+    <Button
+        android:id="@+id/closeCamera_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cameraView"
+        android:layout_toRightOf="@id/takePhoto_btn"
+        android:text="关闭摄像头"
+        android:layout_marginLeft="20dp"
+        android:layout_centerHorizontal="true"
+        />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_below="@id/takePhoto_btn"
         android:layout_centerHorizontal="true"/>
+
 
 </RelativeLayout>

@@ -44,18 +44,21 @@ public class RxNettyClientManager {
                 if (mConnection==null){
                     Timber.d("开始连接");
                     TcpClient.newClient(host,port)
+                            //添加编码
                             .<String,String>addChannelHandlerLast("string-decoder", new Func0<ChannelHandler>() {
                                 @Override
                                 public ChannelHandler call() {
                                     return new StringDecoder();
                                 }
                             })
+                            //添加解码
                             .<String,String>addChannelHandlerLast("string-encoder", new Func0<ChannelHandler>() {
                                 @Override
                                 public ChannelHandler call() {
                                     return new StringEncoder();
                                 }
                             })
+                            //创建连接
                             .createConnectionRequest()
                             .subscribe(new Action1<Connection<String, String>>() {
                                 @Override

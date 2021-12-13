@@ -16,17 +16,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOpenSourceLibraryStudyDemo">
-        <activity android:name=".view.MMKVActivity"></activity>
-        <activity android:name=".view.MulticastSocketActivity" />
-        <activity android:name=".view.NettyActivity" />
-        <activity android:name=".view.AndroidAsyncActivity" />
-        <activity android:name=".view.CameraViewActivity" />
-        <activity android:name=".view.OkHttpActivity" />
-        <activity android:name=".view.RetrofitActivity" />
-        <activity android:name=".view.RxjavaActivity" />
-        <activity android:name=".view.RetrofitRxjavaActivity" />
-        <activity android:name=".view.ViewBindingActivity" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.activity.KotlinActivity"></activity>
+        <activity android:name=".view.activity.ViewPager2Activity" />
+        <activity android:name=".view.activity.MMKVActivity" />
+        <activity android:name=".view.activity.MulticastSocketActivity" />
+        <activity android:name=".view.activity.NettyActivity" />
+        <activity android:name=".view.activity.AndroidAsyncActivity" />
+        <activity android:name=".view.activity.CameraViewActivity" />
+        <activity android:name=".view.activity.OkHttpActivity" />
+        <activity android:name=".view.activity.RetrofitActivity" />
+        <activity android:name=".view.activity.RxjavaActivity" />
+        <activity android:name=".view.activity.RetrofitRxjavaActivity" />
+        <activity android:name=".view.activity.ViewBindingActivity" />
+        <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
