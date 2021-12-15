@@ -135,6 +135,12 @@ dependencies {
     debugImplementation("io.objectbox:objectbox-android-objectbrowser:$objectboxVersion")
     releaseImplementation("io.objectbox:objectbox-android:$objectboxVersion")
 
+    //图片选择库Matissehttps://github.com/zhihu/Matisse
+    implementation 'com.zhihu.android:matisse:0.5.3-beta3'
+
+    // 动态权限RxPermissions
+    implementation group: 'com.tbruyelle.rxpermissions2', name: 'rxpermissions', version: '0.9.5'
+
 }
 //启用ObjectBox调试必须将objectBox依赖插件代码写在最后，否则会重复引用库冲突
 apply plugin: "io.objectbox"

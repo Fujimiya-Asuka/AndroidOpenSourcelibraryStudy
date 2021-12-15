@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         clickAndSwitchActivity(binding.MulticastSocketBtn, MulticastSocketActivity::class.java)
         clickAndSwitchActivity(binding.mmkvBtn, MMKVActivity::class.java)
         clickAndSwitchActivity(binding.objectBoxBtn,ObjectBoxActivity::class.java)
+        clickAndSwitchActivity(binding.matisseBtn,MyMatisseActivity::class.java)
 
     }
 
