@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.view.View
-import android.widget.Toast
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityMainBinding
+import com.asuka.mqttlibrary.view.MQTTActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         clickAndSwitchActivity(binding.mmkvBtn, MMKVActivity::class.java)
         clickAndSwitchActivity(binding.objectBoxBtn,ObjectBoxActivity::class.java)
         clickAndSwitchActivity(binding.matisseBtn,MyMatisseActivity::class.java)
-
+        clickAndSwitchActivity(binding.mqttBtn,
+            MQTTActivity::class.java)
     }
 
     /**
