@@ -33,8 +33,8 @@ public class MQTTService extends Service {
     public static final String HOST = "tcp://192.168.137.1:1883";//服务器地址（协议+地址+端口号）
     private static final String USERNAME = "user";//用户名
     private static final String PASSWORD = "user";//密码
-    public static String PUBLISH_TOPIC  = "android_publish";//发布主题
-    public static String SUBSCRIBE_TOPIC = "android_arrived";//订阅主题
+    public static String PUBLISH_TOPIC  = "android_miNote7";//发布主题
+    public static String SUBSCRIBE_TOPIC = "android_mi6";//订阅主题
     private static String MODEL= Build.MODEL;
 
     @Override
@@ -167,7 +167,7 @@ public class MQTTService extends Service {
             Log.i(TAG, "MQTT连接成功 ");
             try {
                 //开始订阅
-                mqttAndroidClient.subscribe(SUBSCRIBE_TOPIC, 0);//订阅主题，参数：主题、服务质量
+                mqttAndroidClient.subscribe(SUBSCRIBE_TOPIC, 2);//订阅主题，参数：主题、服务质量
                 response(MODEL+"上线，并订阅了："+ SUBSCRIBE_TOPIC +"主题，发布主题为："+PUBLISH_TOPIC);
             } catch (MqttException e) {
                 Log.d(TAG, e.getMessage());

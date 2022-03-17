@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragmentHomePage"
+        android:icon="@drawable/ic_baseline_android_24"
+        android:title="首页" />
+    <item
+        android:id="@+id/fragmentDiasoverPager"
+        android:icon="@drawable/ic_baseline_camera_24"
+        android:title="发现" />
+    <item
+        android:id="@+id/fragmentMinePager"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="我的" />
+</menu>

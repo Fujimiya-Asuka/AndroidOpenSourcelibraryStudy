@@ -8,9 +8,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.FOREGROUN" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".AppMain"
@@ -20,7 +19,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOpenSourceLibraryStudyDemo">
-        <activity android:name=".view.activity.MyMatisseActivity"></activity>
+        <activity
+            android:name=".view.activity.NavigationActivity"
+            android:exported="false" />
+        <activity android:name=".view.activity.MyMatisseActivity" />
         <activity android:name=".view.activity.ObjectBoxActivity" />
         <activity android:name=".view.activity.KotlinActivity" />
         <activity android:name=".view.activity.ViewPager2Activity" />

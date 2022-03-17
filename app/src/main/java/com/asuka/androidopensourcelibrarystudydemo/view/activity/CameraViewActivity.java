@@ -18,7 +18,11 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.renderscript.Type;
+import android.util.Log;
+import android.view.View;
+
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityCameraViewBinding;
+import com.asuka.androidopensourcelibrarystudydemo.utils.Base64BitmapUtil;
 import com.bumptech.glide.Glide;
 import com.otaliastudios.cameraview.BitmapCallback;
 import com.otaliastudios.cameraview.CameraListener;
@@ -34,6 +38,9 @@ import timber.log.Timber;
 
 public class CameraViewActivity extends AppCompatActivity implements FrameProcessor {
     private Context mContext = this;
+    private Bitmap mBitmap1;
+    private Bitmap mBitmap2;
+    private String base64Pic;
     ActivityCameraViewBinding binding;
 
     //用于将nv21数据转为bitmap
@@ -65,7 +72,7 @@ public class CameraViewActivity extends AppCompatActivity implements FrameProces
         // 能否使用Camera2需要设备支持
         binding.cameraView.setEngine(Engine.CAMERA2);
         //添加帧处理器，实现类实现FrameProcessor接口
-        binding.cameraView.addFrameProcessor(this);
+//        binding.cameraView.addFrameProcessor(this);
 
         //点击拍照
         binding.takePhotoBtn.setOnClickListener(view -> {
@@ -73,11 +80,19 @@ public class CameraViewActivity extends AppCompatActivity implements FrameProces
         });
         //打开摄像头
         binding.openCameraBtn.setOnClickListener(view -> {
-            binding.cameraView.open();
+//            binding.cameraView.open();
+            base64Pic = Base64BitmapUtil.bitmapToBase64(mBitmap1);
+            Log.d("base64", "onCreate: "+base64Pic);
         });
         //关闭摄像头
         binding.closeCameraBtn.setOnClickListener(view ->{
-           binding.cameraView.close();
+//           binding.cameraView.close();
+            mBitmap2 = Base64BitmapUtil.base64ToBitmap(base64Pic);
+                                        Glide.with(mContext)
+                                    .load(mBitmap2)
+                                    .into(binding.imageView2);
+                            binding.cameraView.close();
+                            binding.imageView2.setVisibility(View.VISIBLE);
         });
     }
 
@@ -85,6 +100,7 @@ public class CameraViewActivity extends AppCompatActivity implements FrameProces
     protected void onResume() {
         super.onResume();
         //addCameraListener 为cameraView设置事件监听处理
+        binding.imageView2.setVisibility(View.GONE);
         binding.cameraView.addCameraListener(new CameraListener() {
             @Override
             public void onPictureTaken(@NonNull @NotNull PictureResult result) {
@@ -92,9 +108,12 @@ public class CameraViewActivity extends AppCompatActivity implements FrameProces
                     result.toBitmap(new BitmapCallback() {
                         @Override
                         public void onBitmapReady(@Nullable @org.jetbrains.annotations.Nullable Bitmap bitmap) {
-                            Glide.with(mContext)
-                                    .load(bitmap)
-                                    .into(binding.imageView);
+                            mBitmap1=bitmap;
+//                            Glide.with(mContext)
+//                                    .load(bitmap)
+//                                    .into(binding.imageView2);
+//                            binding.cameraView.close();
+//                            binding.imageView2.setVisibility(View.VISIBLE);
                         }
                     });
                 }

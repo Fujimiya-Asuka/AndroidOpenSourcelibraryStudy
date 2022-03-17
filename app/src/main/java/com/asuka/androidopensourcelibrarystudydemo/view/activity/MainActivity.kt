@@ -1,23 +1,21 @@
 package com.asuka.androidopensourcelibrarystudydemo.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.content.Intent
 import android.view.View
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityMainBinding
 import com.asuka.mqttlibrary.view.MQTTActivity
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun initViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun initView() {
+
+    }
+
+    override fun initListener() {
         clickAndSwitchActivity(binding.viewBindingBtn, ViewBindingActivity::class.java)
         clickAndSwitchActivity(binding.retrofitRxJavaBtn, RetrofitRxjavaActivity::class.java)
         clickAndSwitchActivity(binding.rxjavaBtn, RxjavaActivity::class.java)
@@ -28,10 +26,14 @@ class MainActivity : AppCompatActivity() {
         clickAndSwitchActivity(binding.RxNettyBtn, NettyActivity::class.java)
         clickAndSwitchActivity(binding.MulticastSocketBtn, MulticastSocketActivity::class.java)
         clickAndSwitchActivity(binding.mmkvBtn, MMKVActivity::class.java)
-        clickAndSwitchActivity(binding.objectBoxBtn,ObjectBoxActivity::class.java)
-        clickAndSwitchActivity(binding.matisseBtn,MyMatisseActivity::class.java)
-        clickAndSwitchActivity(binding.mqttBtn,
-            MQTTActivity::class.java)
+        clickAndSwitchActivity(binding.objectBoxBtn, ObjectBoxActivity::class.java)
+        clickAndSwitchActivity(binding.matisseBtn, MyMatisseActivity::class.java)
+        clickAndSwitchActivity(binding.mqttBtn, MQTTActivity::class.java)
+        clickAndSwitchActivity(binding.navigationBtn, NavigationActivity::class.java)
+    }
+
+    override fun initData() {
+
     }
 
     /**
@@ -44,4 +46,7 @@ class MainActivity : AppCompatActivity() {
     private fun clickAndSwitchActivity(view: View, cls: Class<*>) {
         view.setOnClickListener { startActivity(Intent(this@MainActivity, cls)) }
     }
+
+
+
 }

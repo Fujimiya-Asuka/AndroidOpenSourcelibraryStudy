@@ -1,100 +1,53 @@
 package com.asuka.androidopensourcelibrarystudydemo.view.activity
 
+import android.app.ProgressDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityRetrofitBinding
 import com.asuka.androidopensourcelibrarystudydemo.modle.api.Api
+import com.asuka.androidopensourcelibrarystudydemo.modle.api.WApi
 import com.asuka.androidopensourcelibrarystudydemo.modle.api.WanAndroidApi
 import com.asuka.androidopensourcelibrarystudydemo.modle.pojo.BaseResponse
 import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.MyCallBack
 import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.RetrofitFactory
+import com.asuka.http.Interceptor.log.HttpLogInterceptor
+import com.asuka.http.RXHttp
+import com.asuka.http.api.RxApi
+import com.asuka.http.response.DialogResponse
+import com.asuka.http.utils.NetWorkScheduler
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 import java.io.IOException
 
 class RetrofitActivity : AppCompatActivity() {
-    var binding: ActivityRetrofitBinding? = null
+    var binding: ActivityRetrofitBinding= ActivityRetrofitBinding.inflate(layoutInflater)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRetrofitBinding.inflate(
-            layoutInflater
-        )
-        //        setContentView(R.layout.activity_retrofit);
-        setContentView(binding!!.root)
-        val api = RetrofitFactory.getClient().create(Api::class.java)
-        binding!!.getBtn.setOnClickListener { view: View? ->
-            api.get("123","123").enqueue(object : MyCallBack<ResponseBody>(){
-                override fun onResponse(
-                    call: Call<ResponseBody>?,
-                    response: Response<ResponseBody>?
-                ) {
-
-                }
-
-            })
-        }
-        binding!!.postBtn.setOnClickListener {
-            api.post("123", "456").enqueue(object: MyCallBack<ResponseBody>() {
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                }
-            })
-        }
-        binding!!.postWanBtn.setOnClickListener {
-            val wanAndroidClient = RetrofitFactory.getWanAndroidClient()
-            val wanAndroidApi = wanAndroidClient.create(WanAndroidApi::class.java)
-            //不使用自动数据类型的请求情况:
-            wanAndroidApi.login("Fujimiya_Asuka", "1593572580")
-                .enqueue(object : MyCallBack<ResponseBody>() {
-                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                        //需要自己手动将ResponseBody的数据转换为BaseResponse
-                        var s: String? = null
-                        if (response != null) {
-                            try {
-                                s = response.body().string()
-                            } catch (e: IOException) {
-                                e.printStackTrace()
-                            }
-                        }
-                        Timber.d("不使用自动数据类型的请求情况:")
-                        val baseResponse = JSON.parseObject(s, BaseResponse::class.java)
-                        Timber.d(baseResponse.toString())
-                    }
-                })
-            //使用自动数据类型的请求情况:
-            wanAndroidApi.login2("Fujimiya_Asuka", "1593572580")
-                .enqueue(object : MyCallBack<BaseResponse>() {
-                    override fun onResponse(
-                        call: Call<BaseResponse>,
-                        response: Response<BaseResponse>
-                    ) {
-                        Timber.d("使用自动数据类型的请求情况:")
-                        //response的body就是BaseResponse类型的数据
-                        val baseResponse = response.body()
-                        Timber.d(baseResponse.toString())
-                    }
-                })
-        }
-
-
-//        binding.postBtn.setOnClickListener(view -> api.post("123","456").enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                try {
-//                    Timber.d(response.body().string());
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                Timber.d(t);
-//            }
-//        }));
+        setContentView(binding.root)
+        initListener()
     }
+
+    private fun initListener() {
+
+        binding.postWanBtn.setOnClickListener {
+            RXHttp.Instance.baseUrl="https://www.wanandroid.com"
+            RXHttp.Instance.addInterceptor(HttpLogInterceptor())
+            RXHttp.Instance.custom(WApi::class.java).login("Fujimiya_Asuka","1593572580")
+                .compose(NetWorkScheduler().ioMain())
+                .subscribe(object : DialogResponse<ResponseBody>(this){
+                    override fun onSuccess(data: ResponseBody) {
+                        Timber.e(data.string())
+                    }
+                    override fun onFailure(e: Throwable) {
+                        Timber.e(e)
+                    }
+                })
+        }
+    }
+
 }

@@ -32,17 +32,17 @@
                 android:id="@+id/rxjava_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RxJava"
                 android:layout_below="@id/retrofit_rxJava_btn"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:text="RxJava" />
 
             <Button
                 android:id="@+id/retrofit_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Retrofit"
                 android:layout_below="@id/rxjava_btn"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:text="Retrofit" />
 
             <Button
                 android:id="@+id/okhttp_btn"
@@ -64,17 +64,17 @@
                 android:id="@+id/AndroidAsync_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AndroidAsync"
                 android:layout_below="@id/cameraView"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:text="AndroidAsync" />
 
             <Button
                 android:id="@+id/RxNetty_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RxNetty"
                 android:layout_below="@id/AndroidAsync_btn"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:text="RxNetty" />
 
             <Button
                 android:id="@+id/MulticastSocket_btn"
@@ -112,9 +112,17 @@
                 android:id="@+id/mqtt_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MQTT"
                 android:layout_below="@id/objectBox_btn"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:text="MQTT" />
+
+            <Button
+                android:id="@+id/navigation_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mqtt_btn"
+                android:layout_centerHorizontal="true"
+                android:text="navigation" />
 
         </RelativeLayout>
 

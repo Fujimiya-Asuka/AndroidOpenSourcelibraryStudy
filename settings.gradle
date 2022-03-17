@@ -2,3 +2,4 @@ rootProject.name = "AndroidOpenSourceLibraryStudyDemo"
 include ':app'
 include ':mqtt'
 include ':common'
+include ':XHttp'

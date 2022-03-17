@@ -8,6 +8,7 @@ import com.asuka.androidopensourcelibrarystudydemo.modle.pojo.Person
 import com.asuka.androidopensourcelibrarystudydemo.modle.pojo.Person_
 import io.objectbox.Box
 import timber.log.Timber
+import kotlin.math.absoluteValue
 
 class ObjectBoxActivity : AppCompatActivity() {
     private lateinit var binding:ActivityObjectBoxBinding
@@ -22,9 +23,12 @@ class ObjectBoxActivity : AppCompatActivity() {
 
         binding.addBtn.setOnClickListener {
             Timber.d("添加操作")
-            personBox.put(Person(0,"小明",19,"广州"))
-            personBox.put(Person(0,"小红",18,"上海"))
-            personBox.put(Person(0,"小强",20,"北京"))
+            val l1 = personBox.put(Person(0, "小明", 19, "广州"))
+            Timber.d(""+l1)
+            val l2 = personBox.put(Person(0,"小红",18,"上海"))
+            Timber.d(""+l2)
+            val l3 = personBox.put(Person(0,"小强",20,"北京"))
+            Timber.d(""+l3)
             upDataTextView()
         }
 

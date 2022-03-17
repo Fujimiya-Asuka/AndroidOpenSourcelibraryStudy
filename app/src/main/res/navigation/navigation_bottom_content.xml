@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_test"
+    app:startDestination="@id/fragmentHomePage">
+
+    <fragment
+        android:id="@+id/fragmentHomePage"
+        android:name="com.asuka.androidopensourcelibrarystudydemo.view.fragerment.FragmentHomePage"
+        android:label="fragment_d"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_fragmentD2_to_fragmentE"
+            app:destination="@id/fragmentE" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDiasoverPager"
+        android:name="com.asuka.androidopensourcelibrarystudydemo.view.fragerment.FragmentB"
+        android:label="fragment_b"
+        tools:layout="@layout/fragment_b" />
+    <fragment
+        android:id="@+id/fragmentMinePager"
+        android:name="com.asuka.androidopensourcelibrarystudydemo.view.fragerment.FragmentC"
+        android:label="fragment_c"
+        tools:layout="@layout/fragment_c" />
+    <fragment
+        android:id="@+id/fragmentE"
+        android:name="com.asuka.androidopensourcelibrarystudydemo.view.fragerment.FragmentDiscoverPage"
+        android:label="fragment_e"
+        tools:layout="@layout/fragment_discover_pager" />
+</navigation>

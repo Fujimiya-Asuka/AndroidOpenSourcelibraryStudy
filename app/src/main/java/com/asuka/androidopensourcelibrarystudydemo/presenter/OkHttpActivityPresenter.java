@@ -3,7 +3,6 @@ package com.asuka.androidopensourcelibrarystudydemo.presenter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.OkHttpFactory;
-import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.Interceptor.MyInterceptor;
 import com.asuka.androidopensourcelibrarystudydemo.view.activity.OkHttpActivity;
 
 import java.io.IOException;
@@ -68,8 +67,8 @@ public class OkHttpActivityPresenter {
 
     public void postWithInterceptor(){
         OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(new MyInterceptor())
-                .addNetworkInterceptor(new MyInterceptor())
+//                .addInterceptor(new MyInterceptor())
+//                .addNetworkInterceptor(new MyInterceptor())
                 .build();
         FormBody formBody = new FormBody.Builder()
                 .add("a", "1")
