@@ -1,5 +1,6 @@
 package com.asuka.http
 
+import android.util.Log
 import com.asuka.http.request.CustomRequest
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Interceptor
@@ -39,61 +40,43 @@ class RXHttp private constructor() {
     var subUrl = ""
     private var mOkHttpClientBuilder = OkHttpClient.Builder()
     private var mRetrofitClientBuilder = Retrofit.Builder()
-    private var interceptors = mutableListOf<Interceptor>()
-
-    private object Holder {
-        val Instance = RXHttp()
-    }
 
     companion object {
-        val Instance by lazy { Holder.Instance }
-
+        val Instance by lazy(mode=LazyThreadSafetyMode.SYNCHRONIZED) { RXHttp() }
     }
 
     /**
      *  添加拦截器
+     *  @param interceptor 拦截器
      */
     fun addInterceptor(interceptor: Interceptor): RXHttp {
-        interceptors.add(interceptor)
-        return this
+        mOkHttpClientBuilder.addInterceptor(interceptor)
+        return Instance
     }
 
     /**
-     *  构建OkHttp客户端
+     *  添加拦截器
+     *  @param interceptorList 拦截器列表
      */
-    private fun buildOkHttpClient(): OkHttpClient {
-        for (interceptor in interceptors) {
-            mOkHttpClientBuilder.addInterceptor(interceptor)
+    fun addInterceptor(interceptorList: MutableList<Interceptor>): RXHttp {
+        for (interceptor in interceptorList) {
+            addInterceptor(interceptor)
         }
-        return mOkHttpClientBuilder.build()
+        return Instance
     }
 
     /**
-     *  构建Retrofit客户端
+     * 获取OkHttp建造者
      */
-    private fun buildRetrofitClient(): Retrofit {
-        return mRetrofitClientBuilder
-            .baseUrl(baseUrl)
-            .client(buildOkHttpClient())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
     fun getOkhttpClientBuilder(): OkHttpClient.Builder {
-        return mOkHttpClientBuilder
+        return Instance.mOkHttpClientBuilder
     }
 
+    /**
+    *  获取Retrofit建造者
+    */
     fun getRetrofitClientBuilder(): Retrofit.Builder {
-        return mRetrofitClientBuilder
-    }
-
-    fun getOkHttpClient(): OkHttpClient {
-        return Instance.mOkHttpClientBuilder.build()
-    }
-
-    fun getRetrofitClient(): Retrofit {
-        return buildRetrofitClient()
+        return Instance.mRetrofitClientBuilder
     }
 
     /**
@@ -103,6 +86,14 @@ class RXHttp private constructor() {
     fun <T> custom(service: Class<T>): T {
         return CustomRequest().build().create(service)
     }
+
+    fun <T> custom(url:String,service: Class<T>): T {
+        return CustomRequest().build(url).create(service)
+    }
+
+//    fun <T> custom(url:String): T {
+//        return CustomRequest().build(url).create()
+//    }
 
 }
 

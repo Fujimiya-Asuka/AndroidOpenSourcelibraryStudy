@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,38 +7,24 @@
     tools:context=".view.activity.RetrofitActivity">
 
     <Button
-        android:id="@+id/get_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="get" />
-
-    <Button
-        android:id="@+id/post_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="post"
-        android:layout_below="@id/get_btn"/>
-
-    <Button
         android:id="@+id/postWan_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/post_btn"
-        android:layout_centerHorizontal="true"
         android:text="wanAndroidLogin"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/test_btn"
+        android:id="@+id/temporaryReqBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/postWan_btn"
-        android:layout_centerHorizontal="true"
-        android:text="test"
-        android:textAllCaps="false" />
+        android:text="临时请求"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postWan_btn" />
 
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

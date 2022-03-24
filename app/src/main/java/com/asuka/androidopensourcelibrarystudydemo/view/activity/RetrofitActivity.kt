@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityRetrofitBinding
 import com.asuka.androidopensourcelibrarystudydemo.modle.api.Api
+import com.asuka.androidopensourcelibrarystudydemo.modle.api.HttpBinApi
 import com.asuka.androidopensourcelibrarystudydemo.modle.api.WApi
 import com.asuka.androidopensourcelibrarystudydemo.modle.api.WanAndroidApi
 import com.asuka.androidopensourcelibrarystudydemo.modle.pojo.BaseResponse
 import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.MyCallBack
 import com.asuka.androidopensourcelibrarystudydemo.utils.HTTP.RetrofitFactory
+import com.asuka.http.Interceptor.MyInterceptor
 import com.asuka.http.Interceptor.log.HttpLogInterceptor
 import com.asuka.http.RXHttp
 import com.asuka.http.api.RxApi
@@ -24,19 +26,18 @@ import retrofit2.Response
 import timber.log.Timber
 import java.io.IOException
 
-class RetrofitActivity : AppCompatActivity() {
-    var binding: ActivityRetrofitBinding= ActivityRetrofitBinding.inflate(layoutInflater)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-        initListener()
+class RetrofitActivity : BaseActivity<ActivityRetrofitBinding>() {
+    override fun initViewBinding(): ActivityRetrofitBinding {
+        return ActivityRetrofitBinding.inflate(layoutInflater)
     }
 
-    private fun initListener() {
+    override fun initView() {
+
+    }
+
+    override fun initListener() {
 
         binding.postWanBtn.setOnClickListener {
-            RXHttp.Instance.baseUrl="https://www.wanandroid.com"
-            RXHttp.Instance.addInterceptor(HttpLogInterceptor())
             RXHttp.Instance.custom(WApi::class.java).login("Fujimiya_Asuka","1593572580")
                 .compose(NetWorkScheduler().ioMain())
                 .subscribe(object : DialogResponse<ResponseBody>(this){
@@ -48,6 +49,29 @@ class RetrofitActivity : AppCompatActivity() {
                     }
                 })
         }
+
+        binding.temporaryReqBtn.setOnClickListener{
+            Timber.d("temp")
+            RXHttp.Instance.custom("https://httpbin.org/get/",HttpBinApi::class.java).getRequest()
+                .compose(NetWorkScheduler().ioMain())
+                .subscribe(object : DialogResponse<ResponseBody>(this){
+                    override fun onSuccess(body: ResponseBody) {
+                        Timber.d(body.string())
+                    }
+
+                    override fun onFailure(e: Throwable) {
+                        Timber.d(e)
+                    }
+
+                })
+        }
+
+    }
+
+    override fun initData() {
+        RXHttp.Instance.baseUrl="https://www.wanandroid.com"
+        RXHttp.Instance.addInterceptor(HttpLogInterceptor())
+        RXHttp.Instance.addInterceptor(MyInterceptor())
     }
 
 }

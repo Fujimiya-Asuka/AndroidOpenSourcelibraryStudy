@@ -1,7 +1,6 @@
 package com.asuka.androidopensourcelibrarystudydemo.view.activity
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityOkHttpBinding
 import com.asuka.androidopensourcelibrarystudydemo.presenter.OkHttpActivityPresenter

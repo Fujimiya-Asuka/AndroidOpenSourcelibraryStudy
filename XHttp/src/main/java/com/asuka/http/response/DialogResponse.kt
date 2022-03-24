@@ -2,8 +2,11 @@ package com.asuka.http.response
 
 
 import android.content.Context
+import android.util.Log
 import com.asuka.androidopensourcelibrarystudydemo.view.widget.ProgressDialog
 import io.reactivex.disposables.Disposable
+import java.net.UnknownHostException
+
 abstract class DialogResponse<T>(
     private val mContext: Context
 ): BaseResponse<T>() {
