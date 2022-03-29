@@ -1,9 +1,11 @@
 package com.asuka.androidopensourcelibrarystudydemo.view.activity
 
 import android.content.Intent
+import android.os.Environment
 import android.view.View
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityMainBinding
 import com.asuka.mqttlibrary.view.MQTTActivity
+import timber.log.Timber
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -12,7 +14,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initView() {
-
+        for (index in 1..1000){
+         Timber.d("弥漫着古老气息的山脉之中，几道身影闪电般的自半空中闪掠而过，隐隐间，透着一丝狼狈。$index")
+        }
     }
 
     override fun initListener() {

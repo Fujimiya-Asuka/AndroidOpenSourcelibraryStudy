@@ -1,18 +1,13 @@
 package com.asuka.androidopensourcelibrarystudydemo.modle;
 
-import android.widget.Toast;
-
-import com.asuka.androidopensourcelibrarystudydemo.modle.proto.MyProto;
-import com.koushikdutta.async.callback.ListenCallback;
+import com.asuka.xlog.Logger;
 import com.koushikdutta.async.http.server.AsyncHttpServer;
 import com.koushikdutta.async.http.server.AsyncHttpServerRequest;
 import com.koushikdutta.async.http.server.AsyncHttpServerResponse;
 import com.koushikdutta.async.http.server.HttpServerRequestCallback;
 
 import java.io.File;
-import java.sql.Timestamp;
 
-import okhttp3.OkHttpClient;
 import timber.log.Timber;
 
 public class HttpServer implements HttpServerRequestCallback {
@@ -52,6 +47,7 @@ public class HttpServer implements HttpServerRequestCallback {
         server.get("/a",this);
         server.get("/b",this);
         server.get("/c",this);
+        server.directory("/log.txt",new File(Logger.Companion.getInstance().getLogFilePath()));
         //设置post请求接口
         server.post("/d",this);
         server.post("/e",this);
@@ -102,8 +98,6 @@ public class HttpServer implements HttpServerRequestCallback {
             default:
                 break;
         }
-
-
         response.send("hello");
     }
 
