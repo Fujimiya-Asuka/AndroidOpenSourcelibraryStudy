@@ -20,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOpenSourceLibraryStudyDemo">
         <activity
+            android:name=".view.activity.HandleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.ServiceDemoActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.NavigationActivity"
             android:exported="false" />
         <activity android:name=".view.activity.MyMatisseActivity" />
@@ -43,6 +49,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".service.MyService" />
     </application>
 
 </manifest>

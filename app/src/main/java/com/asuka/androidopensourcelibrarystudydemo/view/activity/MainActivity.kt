@@ -1,21 +1,22 @@
 package com.asuka.androidopensourcelibrarystudydemo.view.activity
 
 import android.content.Intent
-import android.os.Environment
 import android.view.View
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityMainBinding
 import com.asuka.mqttlibrary.view.MQTTActivity
-import timber.log.Timber
+import com.orhanobut.logger.Logger
+import com.xlog.XLog
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+
 
     override fun initViewBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
 
     override fun initView() {
-        for (index in 1..1000){
-         Timber.d("弥漫着古老气息的山脉之中，几道身影闪电般的自半空中闪掠而过，隐隐间，透着一丝狼狈。$index")
+        for (i in 1..5000){
+            Logger.d(filesDir.absolutePath)
         }
     }
 
@@ -34,10 +35,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         clickAndSwitchActivity(binding.matisseBtn, MyMatisseActivity::class.java)
         clickAndSwitchActivity(binding.mqttBtn, MQTTActivity::class.java)
         clickAndSwitchActivity(binding.navigationBtn, NavigationActivity::class.java)
+        clickAndSwitchActivity(binding.serviceBtn, ServiceDemoActivity::class.java)
+        clickAndSwitchActivity(binding.handlerBtn, HandleActivity::class.java)
     }
 
     override fun initData() {
-
     }
 
     /**
@@ -50,6 +52,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun clickAndSwitchActivity(view: View, cls: Class<*>) {
         view.setOnClickListener { startActivity(Intent(this@MainActivity, cls)) }
     }
+
 
 
 

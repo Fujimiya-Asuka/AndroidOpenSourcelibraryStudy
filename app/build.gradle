@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "com.asuka.androidopensourcelibrarystudydemo"
-        minSdkVersion 24
+        minSdk 21
         targetSdk 28
         versionCode 1
         versionName "1.0"
@@ -149,6 +149,8 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
+
+    implementation 'com.teprinciple:mailsender:1.2.0'
 
 }
 //启用ObjectBox调试必须将objectBox依赖插件代码写在最后，否则会重复引用库冲突
