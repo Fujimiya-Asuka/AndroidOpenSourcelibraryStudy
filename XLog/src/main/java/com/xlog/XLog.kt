@@ -1,7 +1,12 @@
 package com.xlog
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
+import android.os.Build
+import android.os.Environment
+import androidx.annotation.RequiresApi
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.DiskLogAdapter
 import com.orhanobut.logger.Logger
@@ -9,8 +14,8 @@ import com.teprinciple.mailsender.Mail
 import com.teprinciple.mailsender.MailSender
 import org.jetbrains.annotations.NotNull
 import java.io.File
+import java.text.DateFormat
 import java.util.*
-import kotlin.Exception
 
 class XLog private constructor(){
 
@@ -52,16 +57,70 @@ class XLog private constructor(){
         }
 
         // TODO: 时间格式化
+        fun dataFormat(dateFormat: DateFormat):Companion{
+            return this
+        }
+
         // TODO: 定义TAG
+        fun tag(tag:String):Companion{
+            return this
+        }
+
         // TODO: log整合
+        fun t(tag: String?){
+            Logger.t(tag)
+        }
+
+        fun d(message: String,vararg args:Any?){
+            if (args==null){
+                Logger.d(message)
+            }else{
+                Logger.d(message,args)
+            }
+        }
+
+        fun e(message:String, vararg args:Any?, throwable: Throwable?=null){
+            if (throwable==null){
+                Logger.e(message,args)
+            }else{
+                Logger.e(throwable,message,args)
+            }
+        }
+
+        fun i(message: String){
+            Logger.i(message)
+        }
+
+        fun v(message: String){
+            Logger.v(message)
+        }
+
+        fun w(message: String){
+            Logger.w(message)
+        }
+
+        fun json(json:String){
+            Logger.json(json)
+        }
+
+        fun xml(xml:String){
+            Logger.xml(xml)
+        }
+
+
         // TODO: 自动删除旧日志
+        fun enableAutoDeleteLogFile(days:Int?=null):Companion{
+            return this
+        }
+
         // TODO: 日志导出
-
-        fun copyLogFileToSD(filePath:String?=null){
+        @RequiresApi(Build.VERSION_CODES.M)
+        fun copyLogFileToSD(context: Activity,filePath:String?=null){
             Utils.checkInit(mContext)
-
+            // TODO: 检查权限 无权限动态申请
+            val checkStrongPermission = Utils.checkStrongPermission(context)
             if (filePath==null){
-
+                val SDLogPath = Environment.getExternalStorageDirectory().absolutePath + File.separatorChar + "logger"
             }else{
 
             }
