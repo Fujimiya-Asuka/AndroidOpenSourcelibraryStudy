@@ -5,7 +5,7 @@ import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityNavigatio
 
 class NavigationActivity : BaseActivity<ActivityNavigationBinding>() {
 
-    override fun initViewBinding(): ActivityNavigationBinding? {
+    override fun initViewBinding(): ActivityNavigationBinding {
         return ActivityNavigationBinding.inflate(layoutInflater)
     }
 
