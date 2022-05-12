@@ -41,7 +41,7 @@ abstract class BaseActivity<T:ViewBinding>:AppCompatActivity() {
         _binding=null
     }
 
-    abstract fun initViewBinding():T?
+    abstract fun initViewBinding():T
 
 
     abstract fun initView()
