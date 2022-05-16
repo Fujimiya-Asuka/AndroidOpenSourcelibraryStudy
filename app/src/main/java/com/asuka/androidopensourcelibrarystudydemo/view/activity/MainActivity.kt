@@ -3,6 +3,7 @@ package com.asuka.androidopensourcelibrarystudydemo.view.activity
 import android.content.Intent
 import android.view.View
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityMainBinding
+import com.asuka.androidopensourcelibrarystudydemo.vlayout.VLayoutActivity
 import com.asuka.mqttlibrary.view.MQTTActivity
 import com.orhanobut.logger.Logger
 import com.xlog.XLog
@@ -15,7 +16,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initView() {
-        for (i in 1..5000){
+        for (i in 1..50){
             XLog.d(filesDir.absolutePath)
         }
     }
@@ -36,7 +37,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         clickAndSwitchActivity(binding.mqttBtn, MQTTActivity::class.java)
         clickAndSwitchActivity(binding.navigationBtn, NavigationActivity::class.java)
         clickAndSwitchActivity(binding.serviceBtn, ServiceDemoActivity::class.java)
-        clickAndSwitchActivity(binding.handlerBtn, HandleActivity::class.java)
+//        clickAndSwitchActivity(binding.handlerBtn, HandleActivity::class.java)
+        clickAndSwitchActivity(binding.handlerBtn, VLayoutActivity::class.java)
     }
 
     override fun initData() {

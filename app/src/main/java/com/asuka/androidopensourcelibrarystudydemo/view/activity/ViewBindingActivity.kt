@@ -24,10 +24,8 @@ class ViewBindingActivity : BaseActivity<ActivityViewBindingBinding>() {
     }
 
     override fun initListener() {
-        TODO("Not yet implemented")
     }
 
     override fun initData() {
-        TODO("Not yet implemented")
     }
 }
