@@ -9,8 +9,11 @@ import com.alibaba.android.vlayout.LayoutHelper
 abstract class SimpleDelegateAdapterKT<T,VB:ViewBinding>(open var dataList:MutableList<T>, open var layoutHelper: LayoutHelper)
     : DelegateAdapter.Adapter<RecyclerViewHolderKT<VB>>() {
 
+    open lateinit var holder: RecyclerViewHolderKT<VB>
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolderKT<VB> {
-        return RecyclerViewHolderKT(onCreateViewBinding(LayoutInflater.from(parent.context),parent,viewType))
+        holder = RecyclerViewHolderKT(onCreateViewBinding(LayoutInflater.from(parent.context),parent,viewType))
+        return holder
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolderKT<VB>, position: Int) {
@@ -42,6 +45,42 @@ abstract class SimpleDelegateAdapterKT<T,VB:ViewBinding>(open var dataList:Mutab
     fun add(data:T){
         dataList.add(data)
         notifyItemInserted(dataList.size-1)
+    }
+
+    /**
+     * 指定位置添加一条数据
+     */
+    fun add(data:T,position: Int){
+        dataList.add(position,data)
+        notifyItemInserted(position)
+    }
+
+    /**
+     *  指定位置删除数据
+     */
+    fun delete(position: Int){
+        if (dataList.size>0){
+            dataList.removeAt(position-1)
+            notifyItemChanged(position-1)
+        }
+    }
+
+    /**
+     * 刷新数据
+     */
+    fun refresh(data: T){
+        dataList.clear()
+        dataList.addAll(dataList)
+        notifyDataSetChanged()
+    }
+
+
+    /**
+     * 删除全部数据
+     */
+    fun deleteAll(){
+        dataList.clear()
+        notifyDataSetChanged()
     }
 
 }

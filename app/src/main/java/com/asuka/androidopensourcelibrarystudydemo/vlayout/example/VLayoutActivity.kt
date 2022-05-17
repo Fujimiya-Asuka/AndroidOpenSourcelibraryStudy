@@ -49,6 +49,7 @@ class VLayoutActivity : BaseActivity<ActivityVlayoutBinding>() {
                 dataList: MutableList<Person>
             ) {
                 binding.textView5.text = dataList[position].name+dataList[position].age
+                binding.textView7.text="position$position"
                 binding.textView5.setOnClickListener{
                     Toast.makeText(this@VLayoutActivity,"hello${dataList[position].name}",Toast.LENGTH_SHORT).show()
                 }
@@ -67,8 +68,12 @@ class VLayoutActivity : BaseActivity<ActivityVlayoutBinding>() {
 
     override fun initListener() {
         binding.addBtn.setOnClickListener{
-            myAdapter.add(Person("Jane",21))
+            myAdapter.add(Person("Tom",personList.size+1))
             binding.recyclerView.smoothScrollToPosition(personList.size)
+        }
+
+        binding.subBtn.setOnClickListener{
+            myAdapter.delete(personList.size)
         }
     }
 
