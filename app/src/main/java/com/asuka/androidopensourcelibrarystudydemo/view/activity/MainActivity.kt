@@ -15,7 +15,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initView() {
-        for (i in 1..50){
+        for (i in 1..5){
             XLog.d(filesDir.absolutePath)
         }
     }

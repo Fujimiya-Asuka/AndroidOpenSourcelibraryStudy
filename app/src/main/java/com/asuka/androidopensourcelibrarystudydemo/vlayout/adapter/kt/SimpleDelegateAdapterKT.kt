@@ -1,5 +1,6 @@
 package com.asuka.androidopensourcelibrarystudydemo.vlayout.adapter.kt
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.alibaba.android.vlayout.DelegateAdapter
@@ -9,7 +10,7 @@ abstract class SimpleDelegateAdapterKT<T,VB:ViewBinding>(open var dataList:Mutab
     : DelegateAdapter.Adapter<RecyclerViewHolderKT<VB>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolderKT<VB> {
-        return RecyclerViewHolderKT(onCreateViewBinding(parent, viewType))
+        return RecyclerViewHolderKT(onCreateViewBinding(LayoutInflater.from(parent.context),parent,viewType))
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolderKT<VB>, position: Int) {
@@ -28,11 +29,19 @@ abstract class SimpleDelegateAdapterKT<T,VB:ViewBinding>(open var dataList:Mutab
      * 创建视图
      */
     // XXXXXXXXBinding.inflate(LayoutInflater.from(parent.context))
-    abstract fun onCreateViewBinding(parent: ViewGroup,viewType: Int):VB
+    abstract fun onCreateViewBinding(layoutInflater: LayoutInflater, parent: ViewGroup, viewType: Int):VB
 
     /**
      * 绑定数据
      */
     abstract fun onBindDataOrListener(binding: VB, position: Int, dataList: MutableList<T>)
+
+    /**
+     * 在末尾添加一条新数据
+     */
+    fun add(data:T){
+        dataList.add(data)
+        notifyItemInserted(dataList.size-1)
+    }
 
 }
