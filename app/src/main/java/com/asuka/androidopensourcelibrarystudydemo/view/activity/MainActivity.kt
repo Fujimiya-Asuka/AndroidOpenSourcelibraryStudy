@@ -3,9 +3,8 @@ package com.asuka.androidopensourcelibrarystudydemo.view.activity
 import android.content.Intent
 import android.view.View
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityMainBinding
-import com.asuka.androidopensourcelibrarystudydemo.vlayout.VLayoutActivity
+import com.asuka.androidopensourcelibrarystudydemo.vlayout.example.VLayoutActivity
 import com.asuka.mqttlibrary.view.MQTTActivity
-import com.orhanobut.logger.Logger
 import com.xlog.XLog
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {

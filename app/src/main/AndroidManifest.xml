@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOpenSourceLibraryStudyDemo">
         <activity
-            android:name=".vlayout.VLayoutActivity"
+            android:name=".vlayout.example.VLayoutActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.HandleActivity"
