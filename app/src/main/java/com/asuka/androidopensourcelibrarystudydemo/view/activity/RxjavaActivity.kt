@@ -25,7 +25,11 @@ class RxjavaActivity : AppCompatActivity() {
         )
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe { integer -> binding.textView.text = "" + integer })
+            .subscribe { integer ->
+                runOnUiThread {
+                    binding.textView.text = "" + integer
+                }
+            })
         binding.FlowableBtn.setOnClickListener {
             Thread {
                 for (i in 0..499) {

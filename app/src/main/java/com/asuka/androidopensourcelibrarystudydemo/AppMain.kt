@@ -13,6 +13,7 @@ class AppMain : Application() {
 //        Log.d("TEST", "onCreate: "+XLog.logPath)
         logInit()
         dataBaseInit()
+        xcrash.XCrash.init(this)
     }
 
     /**
