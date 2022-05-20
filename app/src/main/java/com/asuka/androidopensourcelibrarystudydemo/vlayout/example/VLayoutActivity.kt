@@ -4,22 +4,19 @@ package com.asuka.androidopensourcelibrarystudydemo.vlayout.example
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
-import com.alibaba.android.vlayout.layout.GridLayoutHelper
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper
 import com.asuka.androidopensourcelibrarystudydemo.databinding.ActivityVlayoutBinding
 import com.asuka.androidopensourcelibrarystudydemo.databinding.RecycleViewItemBinding
 import com.asuka.androidopensourcelibrarystudydemo.view.activity.BaseActivity
-import com.asuka.androidopensourcelibrarystudydemo.vlayout.adapter.kt.MyAdapter
-import com.asuka.androidopensourcelibrarystudydemo.vlayout.adapter.kt.SimpleDelegateAdapterKT
+import com.asuka.androidopensourcelibrarystudydemo.vlayout.adapter.kt.SimpleDelegateAdapter
 import com.asuka.androidopensourcelibrarystudydemo.vlayout.bean.Person
 
 
 class VLayoutActivity : BaseActivity<ActivityVlayoutBinding>() {
     val personList = mutableListOf<Person>()
-    lateinit var myAdapter:SimpleDelegateAdapterKT<Person,RecycleViewItemBinding>
+    lateinit var myAdapter: SimpleDelegateAdapter<Person, RecycleViewItemBinding>
 
     override fun initViewBinding(): ActivityVlayoutBinding {
         return ActivityVlayoutBinding.inflate(layoutInflater)
@@ -33,7 +30,7 @@ class VLayoutActivity : BaseActivity<ActivityVlayoutBinding>() {
             personList.add(Person("Tom",i))
         }
 
-        myAdapter = object : SimpleDelegateAdapterKT<Person,RecycleViewItemBinding>(personList,LinearLayoutHelper()){
+        myAdapter = object : SimpleDelegateAdapter<Person,RecycleViewItemBinding>(personList,LinearLayoutHelper()){
 
             override fun onCreateViewBinding(
                 layoutInflater: LayoutInflater,
